@@ -1,0 +1,39 @@
+<div class="container" *ngIf="listFormations">
+    <div class="panel panel-primary">
+      <div class="panel-heading"> Liste des Etudiants</div>
+      <div class="panel-body">
+          <span *ngFor="let f of listFormations._embedded.formations">
+            &nbsp;&nbsp;<button (click)="onGetEtudiants(f)"  [ngClass]="f.id==currentFormation.id?'btn btn-success': 'btn btn-primary'">{{ f.nom }}</button>&nbsp;&nbsp;
+          </span><p></p>
+        <table *ngIf="listEetudiants" class="table ">
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de Naissance</th>
+          </tr>
+          <tr *ngFor="let f of listEetudiants._embedded.etudiants">
+            <td>{{f.id}}</td>
+            <td>{{f.nom}}</td>
+            <td>{{f.prenom}}</td>
+            <td>{{f.dateNaissance}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+<!--
+<table *ngIf="listFormations" class="table">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Duree</th>
+  </tr>
+  <tr *ngFor="let f of listFormations._embedded.formations">
+    <td>{{f.id}}</td>
+    <td>{{f.nom}}</td>
+    <td>{{f.duree}}</td>
+  </tr>
+</table>
+-->
