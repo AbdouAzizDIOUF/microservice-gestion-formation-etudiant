@@ -1,0 +1,23 @@
+localhost:8001/formations/$id/etudiants // liste des etudiants d'une formation {id}
+
+localhost:8001/formations/$id // la formation {id}
+
+localhost:8001/etudiants // liste des etudiants
+
+
+
+
+Pour les autorisations d'accee pour d'autres application, il y a deux methode
+    - entiteRepository : on ajoute
+        @CrossOrigin("http://localhost:4200") //accorde l'acce a l'application(localhost:4200) qui n'est pas du domaine
+
+    - cree une classe de configuration
+            GlobalRepositoryRestConfigurer
+
+    Ou en ajoutant les lignes de codes ci-dessous dans la classe apllication
+
+        repositoryRestConfiguration.getCorsRegistry()
+                        .addMapping("/**")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedHeaders("*")
+                        .allowedMethods("OPTIONS", "HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");

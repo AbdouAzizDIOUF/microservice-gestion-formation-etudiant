@@ -8,15 +8,17 @@ import {HttpClient} from '@angular/common/http';
 })
 export class EtudiantsComponent implements OnInit {
 
-  listFormations;
-  listEetudiants;
+
+  listFormations:any;
+  listEetudiants:any;
+
   currentFormation={id:-1};
 
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit() {
       this.httpClient.get("http://localhost:8001/formations")
-        .subscribe(data=>{
+        .subscribe(data => {
             this.listFormations=data;
         },error => {
           console.log(error)
